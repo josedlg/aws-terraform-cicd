@@ -18,6 +18,7 @@ resource "aws_iam_role" "tf-cicd-role" {
  
 }
 
+
 data "aws_iam_policy_document" "tf-cicd-pipeline-policies" {
     statement{
         sid = ""
