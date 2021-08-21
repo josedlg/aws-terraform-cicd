@@ -30,7 +30,6 @@ resource "aws_codebuild_project" "plan" {
    resource "aws_codebuild_project" "apply" {
   name          = "ci-cd-apply"
   description   = "plan stage for terraform"
-  build_timeout = "5"
   service_role  = aws_iam_role.tf-codebuild-role.arn
 
   artifacts {
@@ -57,7 +56,7 @@ resource "aws_codebuild_project" "plan" {
 resource "aws_codepipeline"  "cicd_pipeline" {
     
     name = "tf-cicd"
-    role_arn = aws_iam_role.tf-cicd-role.arn
+    role_arn = aws_iam_role.tf-codepipeline-role.arn
 
     artifact_store {
         type="S3"
